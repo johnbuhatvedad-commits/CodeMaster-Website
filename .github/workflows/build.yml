@@ -25,7 +25,22 @@ jobs:
       - name: Extract CodeMaster ZIP
         run: |
           unzip -o CodeMaster_Offline_Project_v3.zip -d project
-          ls -la project
+
+      - name: Configure Android ABI
+        run: |
+          cd project
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("app/build.gradle")
+          s = p.read_text()
+          if "abiFilters" not in s:
+              s = s.replace(
+                  "defaultConfig {",
+                  'defaultConfig {\n        ndk { abiFilters "arm64-v8a" }',
+                  1
+              )
+          p.write_text(s)
+          PY
 
       - name: Build APK
         run: |
