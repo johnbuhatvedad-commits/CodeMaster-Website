@@ -1,3 +1,4 @@
+
 name: Build CodeMaster APK
 
 on:
@@ -15,7 +16,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: '17'
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -26,19 +27,30 @@ jobs:
         run: |
           unzip -o CodeMaster_Offline_Project_v3.zip -d project
 
-      - name: Configure Android ABI
+      - name: Configure 32-bit and 64-bit support
         run: |
           cd project
           python3 - <<'PY'
           from pathlib import Path
+
           p = Path("app/build.gradle")
           s = p.read_text()
-          if "abiFilters" not in s:
+
+          if "abiFilters" in s:
+              import re
+              s = re.sub(
+                  r'abiFilters\s+[^}]+',
+                  'abiFilters "arm64-v8a", "armeabi-v7a"',
+                  s,
+                  count=1
+              )
+          else:
               s = s.replace(
                   "defaultConfig {",
-                  'defaultConfig {\n        ndk { abiFilters "arm64-v8a" }',
+                  'defaultConfig {\n        ndk { abiFilters "arm64-v8a", "armeabi-v7a" }',
                   1
               )
+
           p.write_text(s)
           PY
 
@@ -47,8 +59,13 @@ jobs:
           cd project
           gradle assembleDebug
 
+      - name: Rename APK
+        run: |
+          mv project/app/build/outputs/apk/debug/app-debug.apk \
+             project/app/build/outputs/apk/debug/CodeMaster.apk
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: CodeMaster-APK
-          path: project/app/build/outputs/apk/debug/*.apk
+          path: project/app/build/outputs/apk/debug/CodeMaster.apk
