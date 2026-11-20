@@ -1,0 +1,35 @@
+name: Build CodeMaster APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Extract CodeMaster ZIP
+        run: |
+          unzip -o CodeMaster_Offline_Project_v3.zip -d project
+          ls -la project
+
+      - name: Build APK
+        run: |
+          cd project
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: CodeMaster-APK
+          path: project/app/build/outputs/apk/debug/*.apk
