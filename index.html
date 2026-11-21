@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a1020">
+<title>CodeMaster | Android</title>
+<style>
+:root{--bg:#0a1020;--muted:#a7b3ca;--blue:#648cff;--purple:#9665ef}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 75% 0%,#29204f 0,transparent 38%),linear-gradient(145deg,#0a1020,#0d1427 65%,#10152a);color:#f5f7ff;font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh}
+.wrap{max-width:1050px;margin:auto;padding:0 25px}
+nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
+.brand{font-weight:800;font-size:1.25rem;letter-spacing:-.4px}.brand b{color:#8caaff}
+.navtag{font-size:.78rem;color:#aebbe0;border:1px solid #ffffff20;border-radius:30px;padding:8px 13px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center;padding:78px 0 66px}
+.eyebrow{color:#9cb4ff;text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:800}
+h1{font-size:clamp(2.7rem,6vw,4.6rem);line-height:1.04;letter-spacing:-.06em;margin:15px 0}
+.sub{color:var(--muted);font-size:1.08rem;line-height:1.75;max-width:520px}
+.buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 22px;border-radius:13px;text-decoration:none;font-weight:750;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.primary{background:linear-gradient(110deg,var(--blue),var(--purple));color:white;box-shadow:0 12px 32px #6658d344}
+.secondary{border:1px solid #ffffff24;color:#e7ecff;background:#ffffff08}
+.smallnote{font-size:.8rem;color:#8794ad;margin-top:14px}
+.preview{background:linear-gradient(150deg,#1a2948,#111a30);border:1px solid #ffffff1b;border-radius:25px;padding:18px;box-shadow:0 25px 75px #0007;transform:rotate(1deg)}
+.window{background:#0b1222;border:1px solid #ffffff12;border-radius:17px;overflow:hidden}
+.wintop{height:42px;display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid #ffffff12;color:#9caaca;font-size:.75rem}
+.dot{width:7px;height:7px;border-radius:50%;background:#6578aa}
+.editor{padding:20px 18px 24px;font:.84rem/2 ui-monospace,monospace;color:#dbe4ff}
+.line{display:flex;gap:18px}.num{color:#53617e;user-select:none}.kw{color:#bd91ff}.fn{color:#8eb5ff}.str{color:#a5dfbb}
+.output{margin:8px 14px 14px;padding:12px;background:#111e32;border-radius:10px;color:#9fe2bd;font:.78rem ui-monospace,monospace}
+.section{padding:18px 0 75px}
+.section h2{text-align:center;font-size:1.65rem;margin:0 0 25px;letter-spacing:-.03em}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:#111b30b8;border:1px solid #ffffff14;border-radius:17px;padding:21px}
+.ico{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:#718cff20;color:#a9bbff;font-size:1.2rem}
+.card h3{font-size:1rem;margin:15px 0 7px}.card p{font-size:.88rem;line-height:1.6;color:var(--muted);margin:0}
+@media(max-width:720px){.hero{grid-template-columns:1fr;padding:55px 0 45px;gap:32px}.preview{max-width:500px;width:100%;margin:auto}.cards{grid-template-columns:1fr}.navtag{font-size:.7rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><div class="brand"><b>&lt;/&gt;</b> CodeMaster</div><div class="navtag">ANDROID APPLICATION</div></nav>
+<main>
+<section class="hero">
+<div>
+<div class="eyebrow">Your mobile coding app</div>
+<h1>CodeMaster<br><span style="color:#9bb1ff">for Android.</span></h1>
+<p class="sub">A mobile coding workspace made for writing, editing, and managing your programming projects right from your phone.</p>
+<div class="buttons">
+<a class="btn primary" href="https://github.com/johnbuhatvedad-commits/CodeMaster-Website/releases/latest/download/CodeMaster.apk">↓ Download APK</a>
+<a class="btn secondary" href="https://github.com/johnbuhatvedad-commits/CodeMaster-Website">View project ↗</a>
+</div>
+<div class="smallnote">Android APK · Get the latest release</div>
+</div>
+<div class="preview" aria-label="Code editor preview">
+<div class="window">
+<div class="wintop"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:8px">main.py</span></div>
+<div class="editor">
+<div class="line"><span class="num">1</span><span><span class="kw">def</span> <span class="fn">welcome</span>():</span></div>
+<div class="line"><span class="num">2</span><span>&nbsp;&nbsp;print(<span class="str">"Hello, CodeMaster!"</span>)</span></div>
+<div class="line"><span class="num">3</span><span></span></div>
+<div class="line"><span class="num">4</span><span><span class="fn">welcome</span>()</span></div>
+</div>
+<div class="output">▶ Output<br><br>Hello, CodeMaster!</div>
+</div>
+</div>
+</section>
+<section class="section">
+<h2>Everything in one workspace</h2>
+<div class="cards">
+<article class="card"><div class="ico">⌨</div><h3>Code editor</h3><p>Write and edit code with a clean, mobile-friendly workspace.</p></article>
+<article class="card"><div class="ico">▶</div><h3>Run your code</h3><p>Use the app's run and output area for supported languages.</p></article>
+<article class="card"><div class="ico">▣</div><h3>Project files</h3><p>Open, save, and manage your coding files on your device.</p></article>
+</div>
+</section>
+</main>
+</div>
+</body>
+</html>
