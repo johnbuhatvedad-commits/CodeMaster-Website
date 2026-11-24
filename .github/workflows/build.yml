@@ -25,7 +25,7 @@ jobs:
 
       - name: Extract CodeMaster ZIP
         run: |
-          unzip -o CodeMaster_Offline_Project_v3.zip -d project
+          unzip -o CodeMaster_Updated_Project.zip -d project
 
       - name: Configure 32-bit and 64-bit support
         run: |
